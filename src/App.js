@@ -1,24 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react'
+import { Route } from "wouter";
+import Home from './components/Home'
+import Busqueda from './components/Busqueda'
+import {SearchContextProvider} from './context/searchContext'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <SearchContextProvider>
+      <Route 
+        path="/" 
+        component = {Home}
+      />
+      <Route 
+        path="/search/:word" 
+        component = {Busqueda}
+      />
+    </SearchContextProvider>
   );
 }
 
